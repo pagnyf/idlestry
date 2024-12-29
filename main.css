@@ -1,0 +1,10 @@
+.production-tiles {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+} 
+
+.tile {
+    background-color: aliceblue;
+    padding: 1em;
+    border: 1em solid white;
+} 

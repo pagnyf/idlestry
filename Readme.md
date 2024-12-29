@@ -10,11 +10,18 @@ Your web browser should open at [localhost:8080](http://localhost:8080) and disp
 
 ## Roadmap
 
-- [ ] Add game code on github
 - [ ] Add game version (incl. last file update)
 - [ ] Add features
+- [ ] Display tiles and buttons only when they are unlocked
+- [ ] Add upgrades
 
 ## Snippets
+
+### Push source code on remote repository
+
+```bash
+git push origin main
+```
 
 ### Build and push container (static file server)
 

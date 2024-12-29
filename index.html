@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Idlestry</title>
+    <link rel="stylesheet" href="main.css">
     <script type="module" src="main.js"></script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
@@ -10,24 +11,42 @@
 
 <h1>Idlestry</h1>
 
-<div>
-    <h2>Bank</h2>
-    <p>Money: </p><p id="money">0</p>
+<div class="production-tiles">
+    <div class="tile">
+        <h2>Bank</h2>
+        <p>Money: </p><p id="money">0</p>
+    </div>
+
+    <div class="tile">
+        <h2>Forest</h2>
+        <p>Wood: </p><p id="wood">0</p>
+        <button type="button" id="wood-button">Cut Wood</button>
+        <button type="button" id="wood-sell-button">Sell Wood</button>
+        <p>Chopper: </p><p id="chopper">0</p>
+        <button type="button" id="chopper-button">Buy Chopper</button>
+        
+    </div>
+
+    <div class="tile">
+        <h2>Shop</h2>
+        <p>Price: </p><p id="wood-price">1</p>
+        <p>Seller: </p><p id="seller">0</p>
+        <button type="button" id="seller-button">Buy Chopper</button>
+    </div>
+
+    <div style="display:none">
+        <h2>Factory</h2>
+    </div>
+
 </div>
 
-<div>
-    <h2>Forest</h2>
-    <p>Wood: </p><p id="wood">0</p>
-    <p>Chopper: </p><p id="chopper">0</p>
-</div>
 
-<div style="display:none"></div>
-    <h2>Factory</h2>
-</div>
-
-<button type="button" id="chopper-button">
-    Buy Chopper
-</button>
 
 </body>
 </html> 
+
+
+<!-- 
+style="grid-row: 2;"
+
+-->

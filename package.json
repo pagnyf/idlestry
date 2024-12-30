@@ -1,13 +1,16 @@
 {
   "name": "idlestry",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "lastUpdated": "2024 March 13 - 16:22",
   "description": "An idle game",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test implemented yet\" && exit 1",
+    "try": "node -e 'require(\"./dev-helpers\").updateVersion()'",
     "start": "http-server -o ./",
-    "deploy": "docker build -t idlestry-server . && docker tag idlestry-server:latest rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && docker push rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && scw container container deploy 6dcf74da-a51f-4e39-b1c7-6b56539c6b94",
-    "push": "git push origin main"
+    "deploy": "docker build -t idlestry-server . && docker tag idlestry-server:latest rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && docker push rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && scw container container deploy 43337443-67ec-4e4d-b997-83992c8d6dfc",
+    "push": "git push origin main",
+    "open": "explorer \"https://idlestryaet36nmy-idlestry-webserver.functions.fnc.fr-par.scw.cloud/\" || open \"https://idlestryaet36nmy-idlestry-webserver.functions.fnc.fr-par.scw.cloud/\""
   },
   "repository": {
     "type": "git",

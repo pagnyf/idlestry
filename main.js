@@ -1,4 +1,4 @@
-import { calculateTimeDifference } from './helpers.js';
+import { calculateTimeDifference, displayVersion } from './helpers.js';
 
 let state = {
     "money": {
@@ -47,6 +47,8 @@ export function main(){
 
 
 function loadScreen(){
+
+    displayVersion();
     //Add button key press to all html elements with corresponding id
     for (let resource in state) {
         const buyButton = document.getElementById(resource + "-button");

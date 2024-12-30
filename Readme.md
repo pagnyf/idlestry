@@ -1,6 +1,9 @@
  
 ## Get started
 
+Prerequisites:
+- Node.js >= 20.17.0
+
 ```bash
 npm install http-server -g
 http-server -o ./
@@ -42,7 +45,7 @@ npm run push
 docker build -t idlestry-server .
 docker tag idlestry-server:latest rg.fr-par.scw.cloud/idlestry/idlestry-server:latest
 docker push rg.fr-par.scw.cloud/idlestry/idlestry-server:latest
-scw container container deploy 6dcf74da-a51f-4e39-b1c7-6b56539c6b94
+scw container container deploy 43337443-67ec-4e4d-b997-83992c8d6dfc
 ```
 
 or the alias using `npm run`:

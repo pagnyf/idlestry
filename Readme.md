@@ -6,6 +6,13 @@ npm install http-server -g
 http-server -o ./
 ```
 
+or the alias using `npm run`:
+
+```bash
+npm install http-server -g
+npm run start
+```
+
 Your web browser should open at [localhost:8080](http://localhost:8080) and display the game.
 
 ## Roadmap
@@ -23,6 +30,12 @@ Your web browser should open at [localhost:8080](http://localhost:8080) and disp
 git push origin main
 ```
 
+or the alias using `npm run`:
+
+```bash
+npm run push
+```
+
 ### Build and push container (static file server)
 
 ```bash
@@ -30,6 +43,12 @@ docker build -t idlestry-server .
 docker tag idlestry-server:latest rg.fr-par.scw.cloud/idlestry/idlestry-server:latest
 docker push rg.fr-par.scw.cloud/idlestry/idlestry-server:latest
 scw container container deploy 6dcf74da-a51f-4e39-b1c7-6b56539c6b94
+```
+
+or the alias using `npm run`:
+
+```bash
+npm run deploy
 ```
 
 ### Run container

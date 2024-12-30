@@ -1,0 +1,26 @@
+{
+  "name": "idlestry",
+  "version": "1.0.0",
+  "description": "An idle game",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -o ./",
+    "deploy": "docker build -t idlestry-server . && docker tag idlestry-server:latest rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && docker push rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && scw container container deploy 6dcf74da-a51f-4e39-b1c7-6b56539c6b94",
+    "push": "git push origin main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pagnyf/idlestry.git"
+  },
+  "keywords": [
+    "idle",
+    "game"
+  ],
+  "author": "FnkyFrky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pagnyf/idlestry/issues"
+  },
+  "homepage": "https://github.com/pagnyf/idlestry#readme"
+}

@@ -21,7 +21,7 @@ export function displayVersion(){
             versionElement.innerHTML = packageJson.version;
         }
         if (versionDateElement){
-            versionDateElement.innerHTML = packageJson.lastUpdated;
+            versionDateElement.innerHTML = packageJson.lastUpdate;
         }
     });
 }

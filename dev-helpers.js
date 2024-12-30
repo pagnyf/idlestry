@@ -5,7 +5,6 @@ updateVersion();
 
 function updateVersion(){
     
-
     fs.readFile('package.json', 'utf8', (err, data) => {
         if (err) {
           console.log("package.json version could not be updated");
@@ -13,17 +12,20 @@ function updateVersion(){
           return;
         }
         const jsonData = JSON.parse(data);
+        const versionParts = jsonData.version.split('.')
+        const newVersion = versionParts.slice(0,-1).join('.')
+            + '.' + (parseInt(versionParts.slice(-1)) + 1).toString();
 
-        fs.writeFile('data.json', updatedData, 'utf8', (err) => {
+        jsonData.version = newVersion;
+        jsonData.lastUpdate = new Date().toISOString();
+
+        fs.writeFile('package.json', JSON.stringify(jsonData,null,"  "), 'utf8', (err) => {
             if (err) {
               console.error(err);
               return;
             }
-        
-            console.log('File updated successfully');
+            console.log('package.json version updated successfully');
         });
-        console.log(jsonData)
-        console.log("package.json version updated");
     });
 
     /*

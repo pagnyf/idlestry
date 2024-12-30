@@ -26,25 +26,6 @@ function updateVersion(){
             }
             console.log('package.json version updated successfully');
         });
-    });
-
-    /*
-    const packageJson = JSON.parse(data);
-    const version = packageJson.version;
-
-    console.log(`The version is: ${version}`);
-    "try": "powershell -Command \"Get-Date -UFormat '%Y-%m-%dT%H:%M:%SZ'\"",
-
-    fetch('package.json').then(
-        response => response.json()
-    ).then(function(packageJson){
-        if (versionElement){
-            versionElement.innerHTML = packageJson.version;
-        }
-        if (versionDateElement){
-            versionDateElement.innerHTML = packageJson.lastUpdated;
-        }
-    });
-    */
+    }); 
 }
 

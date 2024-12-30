@@ -1,14 +1,14 @@
 {
   "name": "idlestry",
-  "version": "0.0.2",
-  "lastUpdate": "2024-12-30T15:38:53.107Z",
+  "version": "0.0.3",
+  "lastUpdate": "2024-12-30T15:41:09.677Z",
   "description": "An idle game",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test implemented yet\" && exit 1",
     "start": "http-server -o ./",
     "deploy": "docker build -t idlestry-server . && docker tag idlestry-server:latest rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && docker push rg.fr-par.scw.cloud/idlestry/idlestry-server:latest && scw container container deploy 43337443-67ec-4e4d-b997-83992c8d6dfc",
-    "push": "node dev-helpers.js && git push origin main",
+    "push": "node dev-helpers.js && git add package.json && for /f \"tokens=4-5 delims=. \" %i in ('powershell -Command \"(Get-Content package.json | ConvertFrom-Json).version\"') do set VERSION=%i.%j && git commit -m \"v%VERSION%\" && git push origin main",
     "open": "explorer \"https://idlestryaet36nmy-idlestry-webserver.functions.fnc.fr-par.scw.cloud/\" || open \"https://idlestryaet36nmy-idlestry-webserver.functions.fnc.fr-par.scw.cloud/\""
   },
   "repository": {

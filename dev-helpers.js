@@ -26,6 +26,6 @@ function updateVersion(){
             }
             console.log('package.json version updated successfully');
         });
-    }); 
+    });
 }
 

@@ -20,9 +20,11 @@ Your web browser should open at [localhost:8080](http://localhost:8080) and disp
 
 ## Roadmap
 
-- [ ] Add features
+- [x] Update numbers on a faster tick speed
 - [ ] Display tiles and buttons only when they are unlocked
 - [ ] Add upgrades
+- [ ] Add features
+
 
 ## Snippets
 

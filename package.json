@@ -1,7 +1,7 @@
 {
   "name": "idlestry",
-  "version": "0.0.3",
-  "lastUpdate": "2024-12-30T15:41:09.677Z",
+  "version": "0.0.5",
+  "lastUpdate": "2024-12-30T16:08:40.880Z",
   "description": "An idle game",
   "main": "server.js",
   "scripts": {

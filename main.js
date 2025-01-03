@@ -34,6 +34,18 @@ let state = {
     }
 }
 
+let place_state = {
+    "bank": {
+        "isUnlocked": true
+    },
+    "forest": {
+        "isUnlocked": true
+    },
+    "shop": {
+        "isUnlocked": false
+    }
+}
+
 let time_state = {
     "startTime": new Date(),
     "ticksPerSecond": 20
@@ -82,19 +94,69 @@ function loadScreen(){
 function mainTickLoop(){
     const currentTime = new Date();
     const inGameTimeString = calculateTimeDifference(time_state.startTime, currentTime);
-    console.log("Current time elapsed: " + inGameTimeString);
+    //console.log("Current time elapsed: " + inGameTimeString);
     console.log(state);
+    //Compute production for each resources
     for (let resource in state) {
         if (state[resource].production){
-            const target_resource = state[resource].production;
+            const produced_resource = state[resource].production;
             const increase_per_tick = state[resource].value * state[resource].efficiency / time_state.ticksPerSecond;
-            // Add integer part to resource value
-            state[target_resource].value += Math.trunc(increase_per_tick);
-            // Add floating part to resource digits value
-            state[target_resource].valueDigits += increase_per_tick % 1;
-            if (Math.abs(state[target_resource].valueDigits) >= 1){
-                state[target_resource].value += Math.trunc(state[target_resource].valueDigits);
-                state[target_resource].valueDigits -= Math.trunc(state[target_resource].valueDigits);
+            // Add integer part to produced resource value
+            state[produced_resource].value += Math.trunc(increase_per_tick);
+            // Add floating part to produced resource digits value
+            state[produced_resource].valueDigits += increase_per_tick % 1;
+            if (Math.abs(state[produced_resource].valueDigits) >= 1){
+                state[produced_resource].value += Math.trunc(state[produced_resource].valueDigits);
+                state[produced_resource].valueDigits -= Math.trunc(state[produced_resource].valueDigits);
+            }
+        }
+    }
+    checkUnlock();
+}
+
+function checkUnlock(){
+    for (let resource in state) {
+        if (state[resource].isUnlocked == false){
+            switch (resource){
+                case 'money':
+                    //state[resource].isUnlocked == true;
+                    break;
+                case 'wood':
+                    //state[resource].isUnlocked == true;
+                    break;
+                case 'chopper':
+                    if (state["wood"].value >= 10){
+                        state[resource].isUnlocked = true;
+                        console.log(resource += " unlocked !");
+                    }
+                    break;
+                case 'seller':
+                    break;
+                case 'wood-price':
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    for (let place in place_state) {
+        if (place_state[place].isUnlocked == false){
+            switch (place){
+                case 'bank':
+                    //state[resource].isUnlocked == true;
+                    break;
+                case 'forest':
+                    //state[resource].isUnlocked == true;
+                    break;
+                case 'shop':
+                    if (state["chopper"].value >= 10){
+                        place_state[place].isUnlocked = true;
+                        state["wood-price"].isUnlocked = true;
+                        //state["seller"].isUnlocked == true;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -103,6 +165,18 @@ function mainTickLoop(){
 function updateScreen(){
     for (let resource in state) {
         document.getElementById(resource).innerHTML = state[resource].value;
+        if (state[resource].isUnlocked == true){
+            document.getElementById(resource).style.display = "block";
+        } else if (state[resource].isUnlocked == false) {
+            document.getElementById(resource).style.display = "none";
+        }
+    }
+    for (let place in place_state) {
+        if (place_state[place].isUnlocked == true){
+            document.getElementById(place).style.display = "block";
+        } else if (place_state[place].isUnlocked == false) {
+            document.getElementById(place).style.display = "none";
+        }
     }
 }
 

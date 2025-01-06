@@ -1,8 +1,9 @@
-import { calculateTimeDifference, displayVersion } from './helpers.js';
+import { calculateTimeDifference } from './helpers.js';
+import { loadScreen, updateScreen } from './display/display.js';
 
 let state = {
     "money": {
-        "value": 10000,
+        "value": 1000,
         "valueDigits": 0,
         "isUnlocked": true,
         "price": function(level){return 0;}
@@ -54,43 +55,14 @@ let time_state = {
 
 main();
 
-
 export function main(){
     console.log("Starting game");
 
-    loadScreen();
+    loadScreen(state);
     setInterval(mainTickLoop, 1000 / time_state.ticksPerSecond);
-    setInterval(updateScreen, 50);
+    setInterval(updateScreen, 50, state, place_state);
 }
 
-
-function loadScreen(){
-
-    displayVersion();
-    //Add button key press to all html elements with corresponding id
-    for (let resource in state) {
-        const buyButton = document.getElementById(resource + "-button");
-        if (buyButton){
-            buyButton.addEventListener('click', function () {
-                const level = state[resource].value;
-                if (state.money.value >= state[resource].price(level)){
-                    state[resource].value += 1;
-                    state.money.value -= state[resource].price(level);
-                }
-            });
-        }
-        const sellButton = document.getElementById(resource + "-sell-button");
-        if (sellButton){
-            sellButton.addEventListener('click', function () {
-                const resource_amount = state[resource].value;
-                if (resource_amount >= 0){
-                    state[resource].value -= resource_amount;
-                    state.money.value += resource_amount * state[resource + "-price"].value;
-                }
-            });
-        }
-    }
-}
 
 function mainTickLoop(){
     const currentTime = new Date();
@@ -167,22 +139,6 @@ function checkUnlock(){
     }
 }
 
-function updateScreen(){
-    for (let resource in state) {
-        document.getElementById(resource + '-value').innerHTML = state[resource].value;
-        if (state[resource].isUnlocked == true){
-            document.getElementById(resource).style.display = "block";
-        } else if (state[resource].isUnlocked == false) {
-            document.getElementById(resource).style.display = "none";
-        }
-    }
-    for (let place in place_state) {
-        if (place_state[place].isUnlocked == true){
-            document.getElementById(place).style.display = "block";
-        } else if (place_state[place].isUnlocked == false) {
-            document.getElementById(place).style.display = "none";
-        }
-    }
-}
+
 
 

@@ -2,7 +2,7 @@ import { calculateTimeDifference, displayVersion } from './helpers.js';
 
 let state = {
     "money": {
-        "value": 500,
+        "value": 10000,
         "valueDigits": 0,
         "isUnlocked": true,
         "price": function(level){return 0;}
@@ -48,7 +48,8 @@ let place_state = {
 
 let time_state = {
     "startTime": new Date(),
-    "ticksPerSecond": 20
+    "ticksPerSecond": 20,
+    "lastLogTime": new Date()
 }
 
 main();
@@ -94,8 +95,12 @@ function loadScreen(){
 function mainTickLoop(){
     const currentTime = new Date();
     const inGameTimeString = calculateTimeDifference(time_state.startTime, currentTime);
-    //console.log("Current time elapsed: " + inGameTimeString);
-    console.log(state);
+    //Logging state every 5 seconds
+    if (((currentTime - time_state.lastLogTime) / 1000) >= 5){
+        console.log(state);
+        time_state.lastLogTime = currentTime;
+        //console.log("Current time elapsed: " + inGameTimeString);
+    }
     //Compute production for each resources
     for (let resource in state) {
         if (state[resource].production){
@@ -152,7 +157,7 @@ function checkUnlock(){
                     if (state["chopper"].value >= 10){
                         place_state[place].isUnlocked = true;
                         state["wood-price"].isUnlocked = true;
-                        //state["seller"].isUnlocked == true;
+                        state["seller"].isUnlocked = true;
                     }
                     break;
                 default:
@@ -164,7 +169,7 @@ function checkUnlock(){
 
 function updateScreen(){
     for (let resource in state) {
-        document.getElementById(resource).innerHTML = state[resource].value;
+        document.getElementById(resource + '-value').innerHTML = state[resource].value;
         if (state[resource].isUnlocked == true){
             document.getElementById(resource).style.display = "block";
         } else if (state[resource].isUnlocked == false) {

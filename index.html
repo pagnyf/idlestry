@@ -18,24 +18,33 @@
 <div class="production-tiles">
     <div class="tile" id="bank">
         <h2>Bank</h2>
-        <p>Money: </p><p id="money">0</p>
+        <div id="money">
+            <p>Money: </p><p id="money-value">0</p>
+        </div>
     </div>
 
     <div class="tile" id="forest">
         <h2>Forest</h2>
-        <p>Wood: </p><p id="wood">0</p>
-        <button type="button" id="wood-button">Cut Wood</button>
-        <button type="button" id="wood-sell-button">Sell Wood</button>
-        <p>Chopper: </p><p id="chopper">0</p>
-        <button type="button" id="chopper-button">Buy Chopper</button>
-        
+        <div id="wood">
+            <p>Wood: </p><p id="wood-value">0</p>
+            <button type="button" id="wood-button">Cut Wood</button>
+            <button type="button" id="wood-sell-button">Sell Wood</button>
+        </div>
+        <div id="chopper">
+            <p>Chopper: </p><p id="chopper-value">0</p>
+            <button type="button" id="chopper-button">Buy Chopper</button>
+        </div>
     </div>
 
     <div class="tile" id="shop">
         <h2>Shop</h2>
-        <p>Price: </p><p id="wood-price">1</p>
-        <p>Seller: </p><p id="seller">0</p>
-        <button type="button" id="seller-button">Buy Seller</button>
+        <div id="wood-price">
+            <p>Price: </p><p id="wood-price-value">1</p>
+        </div>
+        <div id="seller">
+            <p>Seller: </p><p id="seller-value">0</p>
+            <button type="button" id="seller-button">Buy Seller</button>
+        </div>
     </div>
 
     <div style="display:none">
